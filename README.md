@@ -30,16 +30,21 @@ That's the framework earning its keep. T did its job (found a real DRY violation
 
 ## Installation
 
-**Claude.ai**: Upload the packaged `.skill` file via your skills settings.
+**Claude Code** (one-liner — clone directly into your skills folder, then `git pull` to update later):
 
-**Claude Code**:
+```bash
+git clone https://github.com/monomonoke/prompt-engineer-reviewer.git ~/.claude/skills/prompt-engineer-reviewer
+```
+
+**Claude.ai** (clone, zip, rename, upload):
 
 ```bash
 git clone https://github.com/monomonoke/prompt-engineer-reviewer.git
-cp -r prompt-engineer-reviewer ~/.claude/skills/
+zip -r prompt-engineer-reviewer.skill prompt-engineer-reviewer/
+# Then upload prompt-engineer-reviewer.skill via your Claude.ai skills settings
 ```
 
-**Manual**: Copy the `prompt-engineer-reviewer/` folder into wherever your Claude environment scans for skills. The discovery script will then locate any skill in `/tmp`, `/home/claude`, or `/mnt/skills` automatically.
+**Other environments**: Copy the entire `prompt-engineer-reviewer/` folder into whichever directory your Claude environment scans for skills.
 
 ## Usage
 
@@ -50,7 +55,7 @@ The skill activates on phrases like:
 - `engineering review of my skill`
 - `fresh eye check on [skill name]`
 
-Just provide the skill's name. The discovery script auto-locates the target skill and loads `SKILL.md` plus all supporting files in `references/`, `scripts/`, `assets/`, `docs/`, and `examples/`.
+Just provide the skill's name. The discovery script auto-locates the target skill (searching `/tmp`, `/home/claude`, and `/mnt/skills` — the standard locations in Anthropic's hosted environments) and loads `SKILL.md` plus all supporting files in `references/`, `scripts/`, `assets/`, `docs/`, and `examples/`.
 
 ## Workflow
 
